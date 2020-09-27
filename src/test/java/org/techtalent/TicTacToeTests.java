@@ -36,9 +36,9 @@ public class TicTacToeTests {
     public void changePlayer_should_change_marker() {
         //Arrange
         TicTacToe sut = new TicTacToe();
+        sut.changePlayer();
 
         //Act
-        sut.changePlayer();
         Marker currentPlayerMarker = sut.getCurrentPlayerMarker();
 
         //Assert
@@ -50,10 +50,10 @@ public class TicTacToeTests {
 
         // Arrange
         TicTacToe sut = new TicTacToe();
-
-        // Act
         sut.placeMark(Marker.X, new Position(1, 2));
         sut.changePlayer();
+
+        // Act
         Throwable throwable = catchThrowable(() -> sut.placeMark(Marker.X, new Position(1, 1)));
 
         // Assert
@@ -77,10 +77,10 @@ public class TicTacToeTests {
     public void placeMark_should_throw_AlreadyMarkedException_when_try_to_add_same_place() {
         // Arrange
         TicTacToe sut = new TicTacToe();
-
-        // Act
         sut.placeMark(Marker.X, new Position(1, 1));
         sut.changePlayer();
+
+        // Act
         Throwable throwable = catchThrowable(() -> sut.placeMark(Marker.O, new Position(1, 1)));
 
         // Assert
@@ -94,11 +94,11 @@ public class TicTacToeTests {
         // Arrange
         TicTacToe sut = new TicTacToe();
 
-        //Act
         for (Position position : positions) {
             sut.placeMark(Marker.X, position);
         }
 
+        //Act
         boolean isWin = sut.checkForWin();
 
         //Assert
